@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tabs
 
     const tabs = document.querySelectorAll('.tabheader__item'),
-          tabContent = document.querySelectorAll('.tabcontent'),
-          tabParent = document.querySelector('.tabheader__items');
-    
+        tabContent = document.querySelectorAll('.tabcontent'),
+        tabParent = document.querySelector('.tabheader__items');
+
     function hideTabContent() {
         tabContent.forEach(item => {
             item.classList.add('hide');
@@ -40,14 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Timer
-    const deadline = new Date('2022-02-11');
+    const deadline = new Date('2022-03-11');
+
     function getRemainingTime(endtime) {
         let offset = new Date().getTimezoneOffset(),
             t = Date.parse(endtime) - Date.parse(new Date()) + offset * 60000,
-            days = Math.floor( (t/(1000*60*60*24)) ),
-            seconds = Math.floor( (t/1000) % 60 ),
-            minutes = Math.floor( (t/1000/60) % 60 ),
-            hours = Math.floor( (t/(1000*60*60) % 24) );
+            days = Math.floor((t / (1000 * 60 * 60 * 24))),
+            seconds = Math.floor((t / 1000) % 60),
+            minutes = Math.floor((t / 1000 / 60) % 60),
+            hours = Math.floor((t / (1000 * 60 * 60) % 24));
         return {
             'total': t,
             'days': days,
@@ -58,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getZero(num) {
-        if (num >=0 && num < 10) {
+        if (num >= 0 && num < 10) {
             return `${0}` + num;
         } else {
             return num;
@@ -67,11 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setClock(selector, endtime) {
         const timer = document.querySelector(selector),
-              days = timer.querySelector('#days'),
-              hours = timer.querySelector('#hours'),
-              minutes = timer.querySelector('#minutes'),
-              seconds = timer.querySelector('#seconds'),
-              timeInterval = setInterval(updateTimer, 1000);
+            days = timer.querySelector('#days'),
+            hours = timer.querySelector('#hours'),
+            minutes = timer.querySelector('#minutes'),
+            seconds = timer.querySelector('#seconds'),
+            timeInterval = setInterval(updateTimer, 1000);
 
         updateTimer();
 
@@ -94,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Modal
 
     const modalTrigger = document.querySelectorAll('[data-modal]'),
-          modalWindow = document.querySelector('.modal');
+        modalWindow = document.querySelector('.modal');
 
     function openModal() {
         modalWindow.classList.add('show');
@@ -112,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modalTrigger.forEach(item => {
         item.addEventListener('click', () => {
             openModal();
-        });    
+        });
     });
 
     modalWindow.addEventListener('click', (e) => {
@@ -175,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
                     </div>
             `;
-            
+
             this.parent.append(element);
         }
     }
@@ -188,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         56,
         '.menu__list',
     ).render();
-    
+
     new Card(
         'img/tabs/elite.jpg',
         'img',
@@ -196,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
         98,
         '.menu__list',
-        ).render();
+    ).render();
 
     new Card(
         'img/tabs/post.jpg',
@@ -220,11 +221,11 @@ document.addEventListener('DOMContentLoaded', () => {
     forms.forEach(item => {
         postData(item);
     });
-    
+
     function postData(form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-    
+
             let statusMessage = document.createElement('div');
             statusMessage.src = message.loading;
             statusMessage.style.cssText = `
@@ -240,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(form);
 
             const object = {};
-            formData.forEach(function(value, key) {
+            formData.forEach(function (value, key) {
                 object[key] = value;
             });
 
@@ -276,9 +277,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="modal__title">${message}</div>
             </div>
         `;
-        
+
         document.querySelector('.modal').append(thanksModal);
-        setTimeout( () => {
+        setTimeout(() => {
             thanksModal.remove();
             prevModalDialog.classList.add('show');
             prevModalDialog.classList.remove('hide');
@@ -286,5 +287,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 4000);
     }
 
-    
+
 });
