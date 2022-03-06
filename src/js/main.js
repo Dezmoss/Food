@@ -95,7 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Modal
 
     const modalTrigger = document.querySelectorAll('[data-modal]'),
-        modalWindow = document.querySelector('.modal');
+        modalWindow = document.querySelector('.modal'),
+        modalClose = document.querySelector('.modal__close');
 
     function openModal() {
         modalWindow.classList.add('show');
@@ -117,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     modalWindow.addEventListener('click', (e) => {
-        if (e.target === modalWindow || e.target.getAttribute('modal-close') == '') {
+        if (e.target === modalWindow || e.target.getAttribute('data-close') == '') {
             closeModal();
         }
     });
@@ -271,15 +272,16 @@ document.addEventListener('DOMContentLoaded', () => {
         openModal();
 
         const thanksModal = document.createElement('div');
-        thanksModal.classList.add = ('.modal__dialog');
+        thanksModal.classList.add('modal__dialog');
         thanksModal.innerHTML = `
             <div class="modal__content">
                 <div class="modal__close" data-close>×</div>
                 <div class="modal__title">${message}</div>
-            </div>
+            </div> 
         `;
 
         document.querySelector('.modal').append(thanksModal);
+
         setTimeout(() => {
             thanksModal.remove();
             prevModalDialog.classList.add('show');
