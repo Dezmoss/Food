@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const forms = document.querySelectorAll('form');
     console.log(forms);
     const message = {
-        loading: 'img/form/spinner.svg',
+        loading: './img/form/spinner.svg',
         success: 'Спасибо! Скоро мы с вами свяжемся',
         failure: 'Что-то пошло не так...'
     };
@@ -267,6 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const prevModalDialog = document.querySelector('.modal__dialog');
 
         prevModalDialog.classList.add('hide');
+        prevModalDialog.classList.remove('show');
         openModal();
 
         const thanksModal = document.createElement('div');
