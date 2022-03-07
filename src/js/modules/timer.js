@@ -1,7 +1,5 @@
-function timer() {
+function timer(id, deadline) {
     // Timer
-    const deadline = new Date('2022-03-11');
-
     function getRemainingTime(endtime) {
         let offset = new Date().getTimezoneOffset(),
             t = Date.parse(endtime) - Date.parse(new Date()) + offset * 60000,
@@ -50,7 +48,7 @@ function timer() {
         }
     }
 
-    setClock('.timer', deadline);
+    setClock(id, deadline);
 }
 
 export default timer;
